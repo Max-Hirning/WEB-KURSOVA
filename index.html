@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is my IP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #f2f3f4;
+        }
+        header {
+            padding-inline: 20px;
+            padding-block: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .logo {
+            width: 216px;
+            height: 71px;
+        }
+        footer {
+            padding-inline: 20px;
+            padding-block: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            background-color: #1f4872;
+            color: white;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        .horizontal-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .social-medias {
+            gap: 24px
+        }
+        nav ul {
+            gap: 10px;
+            list-style: none;
+            width: fit-content;
+            margin: auto;
+        }
+        .ip-detector {
+            padding: 60px;
+            display: flex;
+            gap: 24px;
+            background-color: #1f4872;
+            color: white;
+        }
+        .ip-detector .left {
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+            width: 100%;
+        }
+        .ip-detector .left .top, .ip-detector .left .bottom .left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+        .ip-detector .left .top, .ip-detector .left .bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .ip-detector .left .content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .ip-detector .left .title {
+            font-size: 17px;
+        }
+        .content .ip {
+            background-color: #2d587f;
+            padding: 12px;
+            font-size: 22px;
+        }
+        .ip-detector .left .bottom .content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 12px;
+            font-size: 17px;
+            background-color: #2d587f;
+        }
+        .ip-detector .left .bottom {
+            display: flex;
+            gap: 56px;
+            flex-direction: row;
+            align-items: center;
+        }
+        .ip-detector .left .bottom .right .button {
+            padding-inline: 32px;
+            padding-block: 20px;
+            font-size: 19px;
+            color: white;
+            border: none;
+            width: max-content;
+            background-color: #ff2939;
+            cursor: pointer;
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/WEB/index.html">
+            <image class="logo" src="./icons/logo.webp"/>
+        </a>
+    </header>
+    <main>
+        <section class="ip-detector">
+            <div class="left">
+                <div class="top">
+                    <p class="title">My IP Address is:</p>
+                    <article class="content">
+                        <p class="ip">IPv4: <span id="ipv4">0.0.0.0</span></p>
+                        <p class="ip">Network: <span id="network">0.0.0.0/0</span></p>
+                    </article>
+                </div>
+                <div class="bottom">
+                    <div class="left">
+                        <p class="title">My IP Information:</p>
+                        <article class="content">
+                            <p class="ip">ASN: <span id="asn">----</span></p>
+                            <p class="ip" id="org">----</p>
+                            <p class="ip">City: <span id="city">----</span></p>
+                            <p class="ip">Region: <span id="region">----</span></p>
+                            <p class="ip">Country: <span id="country_name">----</span></p>
+                        </article>
+                    </div>
+                    <div class="right">
+                        <button class="button" id="detect_ip">Get my ip</button>
+                    </div>
+                </div>
+            </div>
+            <div class="right" style="width: 100%; height: auto;">
+                <div id="map" style="width: 100%; height: 100%;"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section class="horizontal-row">
+            <p>© 2000-2025 CGP Holdings, Inc. All Rights Reserved.</p>
+            <nav>
+                <ul class="horizontal-row">
+                    <li>
+                        <a href="/WEB/privacy-policy/index.html">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="/WEB/terms-of-use/index.html">Terms of Use</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <nav>
+            <ul class="horizontal-row social-medias">
+                <li>
+                    <a href="https://www.facebook.com/">
+                        <image src="./icons/social-media/facebook.svg"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/">
+                        <image src="./icons/social-media/instagram.svg"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/">
+                        <image src="./icons/social-media/linkedin.svg"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://x.com/">
+                        <image src="./icons/social-media/twitter.svg"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/">
+                        <image src="./icons/social-media/youtube.svg"/>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        let map;
+        let marker;
+        const button = document.querySelector('#detect_ip');
+
+        function initMap() {
+            const defaultLat = 38.888798;
+            const defaultLon = -77.035299;
+
+            map = L.map('map').setView([defaultLat, defaultLon], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            marker = L.marker([defaultLat, defaultLon]).addTo(map)
+                .bindPopup("You are here")
+                .openPopup();
+        }
+
+        function updateMap(lat, lon) {
+            map.setView([lat, lon], 13);
+            marker.setLatLng([lat, lon]);
+            marker.setPopupContent("You are here").openPopup();
+        }
+
+        async function getUserIPandLocation() {
+            button.textContent = 'Loading...'
+            button.disabled = true;
+
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch IP data');
+                }
+                const data = await response.json();
+
+                document.querySelector('#ipv4').textContent = data.ip;
+                document.querySelector('#network').textContent = data.network;
+                document.querySelector('#asn').textContent = data.asn;
+                document.querySelector('#org').textContent = data.org;
+                document.querySelector('#city').textContent = data.city;
+                document.querySelector('#region').textContent = data.region;
+                document.querySelector('#country_name').textContent = data.country_name;
+
+                updateMap(data.latitude, data.longitude);
+            } catch (error) {
+                console.error("Error fetching IP information:", error);
+            }
+
+            button.textContent = 'Get my ip'
+            button.disabled = false;
+        }
+
+        button.addEventListener('click', getUserIPandLocation);
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>
