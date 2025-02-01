@@ -16,7 +16,9 @@
             padding-inline: 20px;
             padding-block: 40px;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
             gap: 24px;
         }
         .logo {
@@ -76,9 +78,19 @@
 </head>
 <body>
     <header>
-        <a href="/WEB/index.html">
+        <a href="/WEB/index.html" style="width: fit-content;">
             <image class="logo" src="../icons/logo.webp"/>
         </a>
+        <nav>
+            <ul class="horizontal-row social-medias">
+                <ol>
+                    <a href="/WEB/index.html#concernes">Concernes</a>
+                </ol>
+                <ol>
+                    <a href="/WEB/index.html#podcast">Podcast</a>
+                </ol>
+            </ul>
+        </nav>
     </header>
     <main>
         <article>

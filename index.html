@@ -9,6 +9,9 @@
             margin: 0;
             padding: 0;
         }
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             background-color: #f2f3f4;
         }
@@ -16,7 +19,9 @@
             padding-inline: 20px;
             padding-block: 40px;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
             gap: 24px;
         }
         .logo {
@@ -190,9 +195,19 @@
 </head>
 <body>
     <header>
-        <a href="/WEB/index.html">
+        <a href="/WEB/index.html" style="width: fit-content;">
             <image class="logo" src="./icons/logo.webp"/>
         </a>
+        <nav>
+            <ul class="horizontal-row social-medias">
+                <ol>
+                    <a href="/WEB/index.html#concernes">Concernes</a>
+                </ol>
+                <ol>
+                    <a href="/WEB/index.html#podcast">Podcast</a>
+                </ol>
+            </ul>
+        </nav>
     </header>
     <main>
         <section class="ip-detector">
@@ -224,7 +239,7 @@
                 <div id="map" style="width: 100%; height: 100%;"></div>
             </div>
         </section>
-        <section class="concernes">
+        <section class="concernes" id="concernes">
             <h1>Which is your biggest concern about using the Internet?</h1>
             <div class="list">
                 <div class="card">
@@ -241,7 +256,7 @@
                 </div>
             </div>
         </section>
-        <section class="container" style="padding-top: 0px;">
+        <section class="container" id="podcast" style="padding-top: 0px;">
             <h1>Easy Prey Podcast</h1>
             <div class="card player-container">
                 <video id="myVideo" style="display: none;">
