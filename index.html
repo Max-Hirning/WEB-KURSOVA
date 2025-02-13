@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <!-- Устанавливает кодировку страницы в UTF-8, что важно для корректного отображения текста. -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Настраивает адаптивность страницы: устанавливает ширину экрана равной ширине устройства. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <!-- Описание страницы для поисковых систем (и сниппетов в выдаче). -->
+    <meta name="description" content="Check your public IP address and location on a map.">
+    <meta name="keywords" content="IP address, geolocation, find my IP, IP lookup">
+    <meta name="author" content="Max-Hirning">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./icons/logo.webp" sizes="180x180">
     <title>What is my IP</title>
     <link href="./css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
     <header>
-        <a href="/WEB-KURSOVA/index.html" style="width: fit-content;">
+        <a href="./index.html" style="width: fit-content;">
             <image class="logo" src="./icons/logo.webp"/>
         </a>
         <nav>
             <ul class="horizontal-row social-medias">
                 <ol>
-                    <a href="/WEB-KURSOVA/index.html#concernes">Concernes</a>
+                    <a href="#concernes">Concernes</a>
                 </ol>
                 <ol>
-                    <a href="/WEB-KURSOVA/index.html#podcast">Podcast</a>
+                    <a href="#podcast">Podcast</a>
                 </ol>
             </ul>
         </nav>
@@ -56,27 +66,33 @@
         <section class="concernes" id="concernes">
             <h1>Which is your biggest concern about using the Internet?</h1>
             <div class="list">
-                <div class="card">
-                    <article>
-                        <h3>Security</h3>
-                        <p>I want protection from hackers on public Wi-Fi and other unsecured networks.</p>
-                    </article>
-                    <image src="./icons/concern-security.svg"/>
-                </div>
-                <div class="card">
-                    <article>
-                        <h3>Privacy</h3>
-                        <p>I want to prevent my government, ISP and advertisers from tracking me.</p>
-                    </article>
-                    <image src="./icons/concern-privacy.svg"/>
-                </div>
-                <div class="card">
-                    <article>
-                        <h3>Access</h3>
-                        <p>I want to access Netflix, Hulu, and other streaming services without being blocked.</p>
-                    </article>
-                    <image src="./icons/concern-access.svg"/>
-                </div>
+                <a href="https://whatismyipaddress.com/vpn-simplifier-security" target="_blank">
+                    <div class="card">
+                        <article>
+                            <h3>Security</h3>
+                            <p>I want protection from hackers on public Wi-Fi and other unsecured networks.</p>
+                        </article>
+                        <image src="./icons/concern-security.svg"/>
+                    </div>
+                </a>
+                <a href="https://whatismyipaddress.com/vpn-simplifier-privacy" target="_blank">
+                    <div class="card">
+                        <article>
+                            <h3>Privacy</h3>
+                            <p>I want to prevent my government, ISP and advertisers from tracking me.</p>
+                        </article>
+                        <image src="./icons/concern-privacy.svg"/>
+                    </div>
+                </a>
+                <a href="https://whatismyipaddress.com/vpn-simplifier-access" target="_blank">
+                    <div class="card">
+                        <article>
+                            <h3>Access</h3>
+                            <p>I want to access Netflix, Hulu, and other streaming services without being blocked.</p>
+                        </article>
+                        <image src="./icons/concern-access.svg"/>
+                    </div>
+                </a>
             </div>
         </section>
         <section class="container" id="podcast" style="padding-top: 0px;">
